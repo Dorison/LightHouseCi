@@ -1,18 +1,13 @@
-name: Lighthouse Check
+name: Test Overrides
 on: [push]
+
 jobs:
   lighthouse-check:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-    - run: mkdir /tmp/artifacts
+    - uses: actions/checkout@master
     - name: Run Lighthouse
       uses: ./
       with:
-        outputDirectory: /tmp/artifacts
+        overridesJsonFile: '.github/workflows/overrides.json'
         urls: 'https://www.foo.software'
-    - name: Upload artifacts
-      uses: actions/upload-artifact@master
-      with:
-        name: Lighthouse reports
-        path: /tmp/artifacts
