@@ -10,6 +10,7 @@ jobs:
     - name: Run Lighthouse
       uses: foo-software/lighthouse-check-action@master
       with:
+        gitHubAccessToken: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
         outputDirectory: /tmp/artifacts
         urls: 'https://www.bpe.com.ua,https://www.bpe.com.ua/contact'
     - name: Upload artifacts
