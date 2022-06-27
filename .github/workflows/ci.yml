@@ -14,8 +14,8 @@ jobs:
           node-version: 10.x
       - name: npm install, build
         run: |
-          npm init
           npm install npm@8.13.1
+          npm init
           npm run build
       - name: run Lighthouse CI
         run: |
