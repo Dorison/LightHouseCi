@@ -7,7 +7,7 @@ jobs:
     - uses: actions/checkout@v2
     - run: mkdir /tmp/artifacts
     - name: Run Lighthouse
-      uses: lhci/cli@0.8.x
+      uses: ./
       with:
         outputDirectory: /tmp/artifacts
         urls: 'https://www.foo.software'
