@@ -6,13 +6,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@master
-      - run: mkdir ${{ github.workspace }}/tmp/artifacts
+      - run: mkdir /tmp/artifacts
       - name: Run Lighthouse
         uses: foo-software/lighthouse-check-action@master
         with:
           gitAuthor: ${{ github.actor }}
           gitBranch: ${{ github.ref }}
           gitHubAccessToken: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
-          outputDirectory: ${{ github.workspace }}/tmp/artifacts
+          outputDirectory: /tmp/artifacts
           urls: 'https://www.foo.software'
           sha: ${{ github.sha }}
