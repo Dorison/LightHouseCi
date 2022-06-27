@@ -1,25 +1,18 @@
-name: CI
-on: [push]
+name: Lighthouse Check
+on: push
 jobs:
-  lhci:
-    name: Lighthouse
+  lighthouse-check:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-        with:
-          ref: ${{ github.event.pull_request.head.sha }}
-      - name: Use Node.js 10.x
-        uses: actions/setup-node@v1
-        with:
-          node-version: 10.x
-      - name: npm install, build
-        run: |
-          npm install npm@8.13.1
-          npm init
-          npm run build
-      - name: run Lighthouse CI
-        run: |
-          npm install -g @lhci/cli@0.8.x
-          lhci autorun
-        env:
-          LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
+    - uses: actions/[email protected]
+    - run: mkdir /tmp/artifacts
+    - name: Run Lighthouse
+      uses: foo-software/[email protected]
+      with:
+        outputDirectory: /tmp/artifacts
+        urls: 'https://www.foo.software'
+    - name: Upload artifacts
+      uses: actions/[email protected]
+      with:
+        name: Lighthouse reports
+        path: /tmp/artifacts
