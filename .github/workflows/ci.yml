@@ -7,7 +7,7 @@ jobs:
     steps:
     - uses: actions/checkout@master
     - name: Run Lighthouse
-      uses: ./
+      uses: treosh/lighthouse-ci-action@v9
       with:
         overridesJsonFile: '.github/workflows/overrides.json'
         urls: 'https://www.foo.software'
