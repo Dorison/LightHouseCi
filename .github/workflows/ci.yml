@@ -1,18 +1,18 @@
 name: Lighthouse Check
-on: push
+on: [push]
 jobs:
   lighthouse-check:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/[email protected]
+    - uses: actions/checkout@v2
     - run: mkdir /tmp/artifacts
     - name: Run Lighthouse
-      uses: foo-software/[email protected]
+      uses: lhci/cli@0.8.x
       with:
         outputDirectory: /tmp/artifacts
         urls: 'https://www.foo.software'
     - name: Upload artifacts
-      uses: actions/[email protected]
+      uses: actions/upload-artifact@master
       with:
         name: Lighthouse reports
         path: /tmp/artifacts
