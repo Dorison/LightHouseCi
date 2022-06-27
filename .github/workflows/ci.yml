@@ -1,13 +1,19 @@
-name: Test Overrides
-on: [push]
+name: Lighthouse Check
+on: push
 
 jobs:
   lighthouse-check:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@master
+    - uses: actions/checkout@v1
+    - run: mkdir /tmp/artifacts
     - name: Run Lighthouse
-      uses: treosh/lighthouse-ci-action@v9
+      uses: foo-software/lighthouse-check-action@master
       with:
-        overridesJsonFile: '.github/workflows/overrides.json'
-        urls: 'https://www.foo.software'
+        outputDirectory: /tmp/artifacts
+        urls: 'https://www.bpe.com.ua,https://www.bpe.com.ua/contact'
+    - name: Upload artifacts
+      uses: actions/upload-artifact@master
+      with:
+        name: Lighthouse reports
+        path: /tmp/artifacts
